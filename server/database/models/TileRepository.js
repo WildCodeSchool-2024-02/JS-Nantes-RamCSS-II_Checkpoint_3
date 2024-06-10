@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 const AbstractRepository = require("./AbstractRepository");
 
 class TileRepository extends AbstractRepository {
@@ -34,6 +36,15 @@ class TileRepository extends AbstractRepository {
     );
 
     return result;
+  }
+
+  async readByCoordinates(coord_x, coord_y) {
+    // Execute the SQL SELECT query to retrieve tile from the "tile" table by coordinates
+    const [row] = await this.database.query(
+      `select * from ${this.table} where coord_x = ? and coord_y = ?`, [coord_x, coord_y]);
+
+    // Return tile
+    return row;
   }
 }
 

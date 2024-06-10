@@ -6,9 +6,12 @@ const router = express.Router();
 // Define Your API Routes Here
 /* ************************************************************************* */
 
-const { browse } = require("../../../controllers/tileActions");
+const { browse, read } = require("../../../controllers/tileActions");
 
 router.get("/", browse);
+
+router.get("/:coord_x, coord_y", read);
+
 
 /* ************************************************************************* */
 
