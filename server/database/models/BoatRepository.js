@@ -5,9 +5,9 @@ class BoatRepository extends AbstractRepository {
     super({ table: "boat" });
   }
 
-  async readAll() {
+  async readAll(where) {
     // Execute the SQL SELECT query to retrieve all boats from the "boat" table
-    const query = `
+    let query = `
     SELECT 
       boat.id, 
       boat.name, 
@@ -24,11 +24,20 @@ class BoatRepository extends AbstractRepository {
       boat.coord_x = tile.coord_x AND 
       boat.coord_y = tile.coord_y
   `;
-    const [rows] = await this.database.query(query);
+    
+    const queryName = [];
+    if (where && where.name) {
+      query += ` WHERE boat.name = ?`;
+      queryName.push(where.name);
+  
+    }
+    const [rows] = await this.database.query(query, queryName);
 
     // Return the array of boats
     return rows;
   }
+  
+    
   
   async update(boat) {
     // eslint-disable-next-line camelcase
@@ -40,8 +49,8 @@ class BoatRepository extends AbstractRepository {
     );
     return result.affectedRows;
   }
+
+
 }
-
-
 
 module.exports = BoatRepository;
