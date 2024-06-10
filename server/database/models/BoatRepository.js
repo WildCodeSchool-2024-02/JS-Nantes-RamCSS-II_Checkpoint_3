@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const AbstractRepository = require("./AbstractRepository");
 
 class BoatRepository extends AbstractRepository {
@@ -11,6 +12,18 @@ class BoatRepository extends AbstractRepository {
 
     // Return the array of boats
     return rows;
+  }
+
+  // async update(coord_x, coord_y, id) {
+  //   const [row] = await this.database.query(`UPDATE ${this.table} SET coord_x=?, coord_y=? WHERE id=?`, [coord_x, coord_y, id]);
+
+  //   return row.affectedRows;
+  // }
+
+  async update(boat) {
+    const { id, coord_x, coord_y } = boat;
+    const [result] = await this.database.query(`UPDATE ${this.table} SET coord_x = ?, coord_y = ? WHERE id = ?`, [coord_x, coord_y, id]);
+    return result.affectedRows;
   }
 }
 
