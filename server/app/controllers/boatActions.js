@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const tables = require("../../database/tables");
 
 const browse = async (req, res, next) => {
@@ -13,6 +14,22 @@ const browse = async (req, res, next) => {
   }
 };
 
-module.exports = {
-  browse,
+// Fonction visant à mettre à jour un bateau dans la base de donnée
+const edit = async (req, res) => {
+  const {id} = req.params
+  const { tile_id, type, coor_x, coord_y } = req.body;
+  const updateBoatActions = await tables.tile.update(
+    tile_id,
+    type,
+    coor_x,
+    coord_y,
+    id
+  );
+  if (updateBoatActions) {
+    res.sendStatus(204);
+  } else {
+    res.sendStatus(404);
+  }
 };
+
+module.exports = { browse, edit };
