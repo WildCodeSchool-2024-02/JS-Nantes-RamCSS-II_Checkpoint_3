@@ -11,3 +11,4 @@ CREATE TABLE tile (
   name VARCHAR(255) NOT NULL,
   has_treasure BOOLEAN DEFAULT FALSE
 );
+
