@@ -13,6 +13,21 @@ const browse = async (req, res, next) => {
   }
 };
 
+// Fonction pour mettre à jour les coordonnées d'un bateau
+const update = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { coordX, coordY } = req.body;
+    
+    await tables.boat.update(id, coordX, coordY);
+
+    res.sendStatus(204);
+  } catch (err) {
+
+    next(err);
+  }
+};
+
 module.exports = {
-  browse,
+  browse, update
 };
