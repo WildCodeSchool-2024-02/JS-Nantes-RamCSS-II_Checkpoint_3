@@ -14,6 +14,14 @@ const gamesRouter = require("./games/router");
 
 router.use("/games", gamesRouter);
 
+const musicRouter = require("./musics/router");
+
+router.use("/musics", musicRouter);
+
+const tileRouter = require("./tile/router");
+
+router.use("/tiles", tileRouter);
+
 /* ************************************************************************* */
 
 module.exports = router;

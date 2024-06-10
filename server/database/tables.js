@@ -1,5 +1,6 @@
 // Import the repository modules responsible for handling data operations on the tables
 const BoatRepository = require("./models/BoatRepository");
+const MusicRepository = require("./models/MusicRepository");
 const TileRepository = require("./models/TileRepository");
 
 /* ************************************************************************* */
@@ -8,7 +9,8 @@ const TileRepository = require("./models/TileRepository");
 
 const tables = {
   boat: new BoatRepository(),
-  tile: new TileRepository(),
+  music: new MusicRepository(),
+  tile: new TileRepository()
 };
 
 /* ************************************************************************* */
