@@ -35,6 +35,15 @@ class TileRepository extends AbstractRepository {
 
     return result;
   }
+  
+    // eslint-disable-next-line camelcase
+    async readByCoordinates(coord_x, coord_y) {
+    // eslint-disable-next-line camelcase
+    const [rows] = await this.database.query(`SELECT * FROM ${this.table} WHERE coord_x = ? AND coord_y = ?`, [coord_x, coord_y]);
+    return rows;
+  }
 }
+
+
 
 module.exports = TileRepository;
