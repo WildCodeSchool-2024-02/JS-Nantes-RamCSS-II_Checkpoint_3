@@ -12,4 +12,11 @@ router.get('/', browse);
 
 /* ************************************************************************* */
 
+
+// router.put('/:id', validateCoordonate, edit);
+
+// router.post('/', validateCoordonate, add);
+
+/* ************************************************************************* */
+
 module.exports = router;

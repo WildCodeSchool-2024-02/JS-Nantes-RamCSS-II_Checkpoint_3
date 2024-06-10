@@ -7,10 +7,12 @@ const router = express.Router();
 /* ************************************************************************* */
 
 const { browse, edit } = require("../../../controllers/boatActions");
+const validateCoordinate = require('../../../services/tileExists')
+
 
 router.get("/", browse);
 
-router.put('/:id', edit);
+router.put('/:id', validateCoordinate, edit);
 
 /* ************************************************************************* */
 
