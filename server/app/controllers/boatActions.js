@@ -3,10 +3,14 @@ const tables = require("../../database/tables");
 const browse = async (req, res, next) => {
   try {
     // Fetch all boats from the database
-    const boats = await tables.boat.readAll();
+    const boats = await tables.boat.readAll(req.query);
 
     // Respond with the boats in JSON format
-    res.json(boats);
+    if (boats.length > 0) {
+      res.json(boats);
+    } else {
+      res.sendStatus(404);
+    }
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -27,7 +31,6 @@ const edit = async (req, res, next) => {
     } else {
       res.sendStatus(404);
     }
-
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
