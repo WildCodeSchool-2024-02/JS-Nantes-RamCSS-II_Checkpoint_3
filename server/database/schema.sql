@@ -13,3 +13,9 @@ CREATE TABLE tile (
   coord_y INT NOT NULL,
   PRIMARY KEY(id)
 );
+
+
+USE checkpoint3;
+
+
+ALTER TABLE tile ADD has_treasure BOOLEAN false ;
