@@ -13,6 +13,26 @@ const browse = async (req, res, next) => {
   }
 };
 
+// const update = async (req, res) => {
+//   try {
+//   const { id } = req.params.id;
+//   const { coord_x } = req.body.coord_x;
+//   const { coord_y } = req.body.coord_y;
+
+  
+//   const putBoat = await tables.boats.update(id, coord_x, coord_y);
+  
+//   if (putBoat.affectedRows) {
+//     res.status(204).send(`un bateau a été update`);
+//   } else {
+//     res.sendStatus(404);
+//   }
+    
+//   } catch (err) {
+//     console.log(err);
+//   }
+//   }
 module.exports = {
-  browse,
+  browse, 
+  // update
 };
