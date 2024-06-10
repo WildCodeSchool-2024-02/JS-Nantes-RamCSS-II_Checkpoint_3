@@ -1,14 +1,16 @@
 // Import the repository modules responsible for handling data operations on the tables
 const BoatRepository = require("./models/BoatRepository");
 const TileRepository = require("./models/TileRepository");
+const db = require('./client'); // Import your db instance
+
 
 /* ************************************************************************* */
 // Register data repositories for tables
 /* ************************************************************************* */
 
 const tables = {
-  boat: new BoatRepository(),
-  tile: new TileRepository(),
+  boat: new BoatRepository(db),
+  tile: new TileRepository(db),
 };
 
 /* ************************************************************************* */

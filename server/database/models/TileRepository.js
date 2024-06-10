@@ -1,17 +1,15 @@
 const AbstractRepository = require("./AbstractRepository");
 
 class TileRepository extends AbstractRepository {
-  constructor() {
+  constructor(db) {
     super({ table: "tile" });
+    this.db = db;
   }
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all tiles from the "tile" table
-    const [rows] = await this.database.query(
-      `select * from ${this.table} order by coord_y, coord_x`
+    const [rows] = await this.db.query(
+        `select * from ${this.table} order by coord_y, coord_x`
     );
-
-    // Return the array of tiles
     return rows;
   }
 
@@ -34,6 +32,12 @@ class TileRepository extends AbstractRepository {
     );
 
     return result;
+  }
+
+  async readByCoordinates(coordX, coordY) {
+    const query = 'SELECT * FROM checkpoint3.tiles WHERE coord_x = ? AND coord_y = ?';
+    const [rows] = await this.db.execute(query, [coordX, coordY]);
+    return rows;
   }
 }
 
