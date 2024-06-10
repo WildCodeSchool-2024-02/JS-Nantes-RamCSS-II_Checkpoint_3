@@ -13,6 +13,31 @@ const browse = async (req, res, next) => {
   }
 };
 
+
+
+/*
+
+const updateBoat = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { coordX, coordY } = req.body;
+
+
+    res.sendStatus(204);
+
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+*/
+
+
+
+
+
+
 module.exports = {
   browse,
 };

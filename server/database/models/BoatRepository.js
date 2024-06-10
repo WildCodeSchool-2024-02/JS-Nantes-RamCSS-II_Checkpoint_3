@@ -12,6 +12,10 @@ class BoatRepository extends AbstractRepository {
     // Return the array of boats
     return rows;
   }
+
+
 }
+
+
 
 module.exports = BoatRepository;
