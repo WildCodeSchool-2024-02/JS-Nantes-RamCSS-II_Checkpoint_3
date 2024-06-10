@@ -14,8 +14,6 @@ CREATE TABLE tile (
   PRIMARY KEY(id)
 );
 
-
 USE checkpoint3;
 
-
-ALTER TABLE tile ADD has_treasure BOOLEAN false ;
+ALTER TABLE tile ADD has_treasure BOOLEAN DEFAULT false NOT NULL;
