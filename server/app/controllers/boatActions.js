@@ -13,6 +13,35 @@ const browse = async (req, res, next) => {
   }
 };
 
+const edit = async (req, res, next) => {
+
+  // * J'AI ESSAYE 15 ANS COMME ON AVAIT FAIT EN COURS SANS SUCCES, ET J'AI RECOPIE LE CODE D'UNE QUETE HARMONIA, CA A FONCTIONNE MAIS SANS TROP COMPRENDRE LE TRUC
+  
+  // try {
+  //   // * Fetch the informations of update
+  //   // const id = req.params.id;
+  //   // const { coord_x, coord_y } = req.body;
+  //   const boat = { ...req.body, id: req.params.id };
+
+  //   const updateBoats = await tables.boat.update(boat);
+
+  //   if (updateBoats.affectedRows) {
+  //     res.sendStatus(204);
+  //   } else {
+  //     res.sendStatus(404);
+  //   }
+  const boat = {...req.body, id: req.params.id};
+
+  try {
+    await tables.boat.update(boat);
+    
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+  };
+
 module.exports = {
   browse,
+  edit
 };
